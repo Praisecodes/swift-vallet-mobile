@@ -3,50 +3,72 @@ import React, { useState } from 'react';
 import tw from 'twrnc';
 import Layout from './layout';
 import Input from '../../components/common/input';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
+const schema = Yup.object().shape({
+  email: Yup.string().email("Invalid Email Address").required("Email Address Is Required"),
+  password: Yup.string().required("Password Is Required"),
+});
 
 const Register = () => {
-  const [payload, setPayload] = useState<{
-    email: string;
-    password: string;
-  }>({
-    "email": "",
-    "password": ""
-  });
-
   return (
     <Layout page="register">
       <View style={[tw`flex flex-col gap-y-5`]}>
-        <View>
-          <Text style={[tw`text-sm text-[#344054] mb-1`, { fontFamily: "sora" }]}>
-            Email
-          </Text>
-          <Input
-            placeholder="user@example.com"
-            value={payload.email}
-            translucent={false}
-            onChangeText={(e) => { setPayload((value) => ({ ...value, email: e })) }}
-            secureTextEntry={false}
-          />
-        </View>
+        <Formik
+          initialValues={{ email: "", password: "" }}
+          validationSchema={schema}
+          onSubmit={(values) => { console.log(values) }}
+        >
+          {({ errors, touched, handleChange, handleBlur, handleSubmit, values }) => (
+            <>
+              <View>
+                <Text style={[tw`text-sm text-[#344054] mb-1`, { fontFamily: "sora" }]}>
+                  Email
+                </Text>
+                <Input
+                  placeholder="user@example.com"
+                  value={values.email}
+                  translucent={false}
+                  keyboardType="email-address"
+                  onChangeText={handleChange('email')}
+                  secureTextEntry={false}
+                  onBlur={handleBlur('email')}
+                />
+                {errors.email && touched.email && errors.email && (
+                  <Text style={[tw`text-[#ff0000] text-xs`, { fontFamily: "sora" }]}>
+                    {errors.email && touched.password && errors.email}
+                  </Text>
+                )}
+              </View>
 
-        <View>
-          <Text style={[tw`text-sm text-[#344054] mb-1`, { fontFamily: "sora" }]}>
-            Password
-          </Text>
-          <Input
-            placeholder="Password"
-            value={payload.password}
-            translucent={false}
-            onChangeText={(e) => { setPayload((value) => ({ ...value, password: e })) }}
-            secureTextEntry={true}
-          />
-        </View>
+              <View>
+                <Text style={[tw`text-sm text-[#344054] mb-1`, { fontFamily: "sora" }]}>
+                  Password
+                </Text>
+                <Input
+                  placeholder="Password"
+                  value={values.password}
+                  translucent={false}
+                  onChangeText={handleChange('password')}
+                  secureTextEntry={true}
+                  onBlur={handleBlur('password')}
+                />
+                {errors.password && touched.password && errors.password && (
+                  <Text style={[tw`text-[#ff0000] text-xs`, { fontFamily: "sora" }]}>
+                    {errors.password && touched.password && errors.password}
+                  </Text>
+                )}
+              </View>
 
-        <TouchableWithoutFeedback onPress={() => { console.log(payload) }}>
-          <Text style={[tw`bg-[#00BE5D] mt-3 text-base text-[#ffffff] w-[100%] py-4 text-center rounded-md`, { fontFamily: "sora" }]}>
-            Create account
-          </Text>
-        </TouchableWithoutFeedback>
+              <TouchableWithoutFeedback onPress={() => { handleSubmit() }}>
+                <Text style={[tw`bg-[#00BE5D] text-base mt-3 text-[#ffffff] w-[100%] py-4 text-center rounded-md`, { fontFamily: "sora" }]}>
+                  Create account
+                </Text>
+              </TouchableWithoutFeedback>
+            </>
+          )}
+        </Formik>
       </View>
     </Layout>
   )

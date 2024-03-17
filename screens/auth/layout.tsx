@@ -14,7 +14,7 @@ const Layout = ({ children, page }: { children: React.ReactNode; page: "login" |
 
   return (
     <View style={[tw`flex-1 bg-[#ffffff]`]}>
-      <ScrollView contentContainerStyle={[tw`pt-18 pb-5 px-5`]} style={[tw`min-h-[100%]`]}>
+      <ScrollView contentContainerStyle={[tw`pt-18 pb-5 px-5`]} style={[tw`min-h-[90%]`]}>
         {/* <StatusBar animated={true} barStyle="dark-content" /> */}
         <View style={[tw`mx-auto mb-10`]}>
           <Logo width={165.35} height={60} />
