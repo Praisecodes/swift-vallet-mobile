@@ -8,7 +8,10 @@ import * as Yup from 'yup';
 
 const schema = Yup.object().shape({
   email: Yup.string().email("Invalid Email Address").required("Email Address Is Required"),
-  password: Yup.string().required("Password Is Required"),
+  password: Yup
+    .string()
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/, "Password must contain at least, 1 digit, 1 uppercase and 1 lowercase alphabet and must be up to 6 characters")
+    .required("Password Is Required"),
 });
 
 const Login = () => {
