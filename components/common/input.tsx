@@ -1,4 +1,4 @@
-import { KeyboardTypeOptions, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
+import { KeyboardTypeOptions, NativeSyntheticEvent, Text, TextInput, TextInputFocusEventData, TouchableWithoutFeedback, View } from 'react-native';
 import React, { useState } from 'react';
 import tw from 'twrnc';
 import { Feather } from '@expo/vector-icons';
@@ -10,9 +10,10 @@ interface props {
   keyboardType?: KeyboardTypeOptions;
   onChangeText: ((text: string) => void);
   secureTextEntry: boolean;
+  onBlur?: ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void);
 }
 
-const Input = ({ translucent, placeholder, value, keyboardType, onChangeText, secureTextEntry }: props) => {
+const Input = ({ translucent, placeholder, value, keyboardType, onChangeText, secureTextEntry, onBlur }: props) => {
   const [isPassword, setIsPassword] = useState<boolean>(secureTextEntry);
 
   return (
@@ -24,6 +25,7 @@ const Input = ({ translucent, placeholder, value, keyboardType, onChangeText, se
         style={[tw`flex-1 py-3 px-3`, { fontFamily: "sora" }]}
         onChangeText={onChangeText}
         secureTextEntry={isPassword}
+        onBlur={onBlur}
       />
 
       {secureTextEntry && (
