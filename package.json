@@ -12,6 +12,7 @@
     "@expo/config": "~8.5.0",
     "@expo/metro-config": "~0.17.1",
     "@expo/vector-icons": "^14.0.0",
+    "@react-native-async-storage/async-storage": "1.21.0",
     "@react-native/metro-config": "^0.73.5",
     "@react-navigation/native": "^6.1.16",
     "@react-navigation/native-stack": "^6.9.25",

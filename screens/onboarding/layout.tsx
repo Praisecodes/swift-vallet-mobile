@@ -3,6 +3,9 @@ import React from 'react';
 import tw from 'twrnc';
 import Indicator from '../../components/onboarding/indicator';
 import { Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { storeData } from '../../states/async_storage';
+import { useAppStore } from '../../states/zustand';
 
 interface props {
   image: any;
@@ -14,6 +17,15 @@ interface props {
 }
 
 const Layout = ({ image, title, onNexClick, icon, children, page }: props) => {
+  const navigation = useNavigation();
+  const setOnboarded = useAppStore(state => state.setOnboarded);
+
+  const onSkipPress = async () => {
+    if (await storeData('onboarded', "true")) {
+      setOnboarded(true);
+    }
+  }
+
   return (
     <View style={[tw`flex-1 bg-[#ffffff] relative flex flex-col`]}>
       <View style={[tw`flex-1 w-[100%] flex flex-row items-center justify-center px-5 py-5`]}>
@@ -36,7 +48,7 @@ const Layout = ({ image, title, onNexClick, icon, children, page }: props) => {
         <Indicator page={page} />
 
         <View style={[tw`flex flex-row items-center justify-between`]}>
-          <TouchableWithoutFeedback onPress={() => { }}>
+          <TouchableWithoutFeedback onPress={onSkipPress}>
             <Text style={[tw`text-base px-3 py-3`, { fontFamily: "sora" }]}>
               Skip
             </Text>
