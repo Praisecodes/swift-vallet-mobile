@@ -8,7 +8,7 @@ import { Stack } from './constant';
 
 const Onboarding = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ animation: "slide_from_right", headerShown: false }}>
       <Stack.Screen name="one" component={One} />
       <Stack.Screen name="two" component={Two} />
       <Stack.Screen name="three" component={Three} />
