@@ -14,7 +14,7 @@ const Four = ({ navigation }: any) => {
       icon={<Icon width={17} height={17} />}
       title="Profile setup"
     >
-      <Text style={[tw`text-[14px]`, { fontFamily: "sora" }]}>
+      <Text style={[tw`text-[15px]`, { fontFamily: "sora" }]}>
         we will allow you set up your profile and give you an opportunity to
         add all the amazing cars in your possession.
       </Text>
