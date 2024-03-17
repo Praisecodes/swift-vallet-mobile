@@ -1,1 +1,3 @@
-export { };
+import Onboarding from "./onboarding";
+
+export { Onboarding };
