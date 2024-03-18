@@ -5,7 +5,7 @@ import { Stack } from './constant';
 
 const AccountSetup = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false, animation: "slide_from_right" }}>
       <Stack.Screen name="verification" component={Verification} />
       <Stack.Screen name="profile_details" component={ProfileDetails} />
       <Stack.Screen name="car_details" component={CarDetails} />
