@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native';
 import React from 'react';
 import { CarDetails, ProfileDetails, Verification } from '../screens/account_setup';
-import { Stack } from './constant';
+import { SetupStack } from './types';
 
 const AccountSetup = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false, animation: "slide_from_right" }}>
-      <Stack.Screen name="verification" component={Verification} />
-      <Stack.Screen name="profile_details" component={ProfileDetails} />
-      <Stack.Screen name="car_details" component={CarDetails} />
-    </Stack.Navigator>
+    <SetupStack.Navigator screenOptions={{ headerShown: false, animation: "slide_from_right" }}>
+      <SetupStack.Screen name="verification" component={Verification} />
+      <SetupStack.Screen name="profile_details" component={ProfileDetails} />
+      <SetupStack.Screen name="car_details" component={CarDetails} />
+    </SetupStack.Navigator>
   )
 }
 

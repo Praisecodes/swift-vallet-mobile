@@ -1,15 +1,15 @@
 import React from 'react';
 import { Login, Register } from '../screens/auth';
-import { Stack } from './constant';
+import { AuthStack } from './types';
 import AccountSetup from './account_setup';
 
 const Auth = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="login" component={Login} />
-      <Stack.Screen name="register" component={Register} />
-      <Stack.Screen name="account_setup" component={AccountSetup} />
-    </Stack.Navigator>
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+      <AuthStack.Screen name="login" component={Login} />
+      <AuthStack.Screen name="register" component={Register} />
+      <AuthStack.Screen name="account_setup" component={AccountSetup} />
+    </AuthStack.Navigator>
   )
 }
 

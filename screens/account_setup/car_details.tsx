@@ -10,8 +10,10 @@ import * as ImagePicker from 'expo-image-picker';
 import Image from '../../assets/icons/image.svg';
 // @ts-ignore
 import Success from '../../assets/icons/success.svg';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../routers/types';
 
-const CarDetails = ({ navigation }: any) => {
+const CarDetails = ({ navigation }: { navigation: NativeStackNavigationProp<RootStackParamList, 'account_setup'> }) => {
   const [carDetails, setCarDetails] = useState<{ name: string; model: string; plate: string; color: string }>({
     name: "",
     model: "",
@@ -147,7 +149,7 @@ const CarDetails = ({ navigation }: any) => {
           </View>
         </View>
 
-        <TouchableWithoutFeedback onPress={() => {  }}>
+        <TouchableWithoutFeedback onPress={() => { }}>
           <Text style={[tw`w-[100%] text-center py-4 rounded-md text-base mt-14 bg-[#00BE5D] text-[#ffffff]`, { fontFamily: "sora" }]}>
             Next
           </Text>

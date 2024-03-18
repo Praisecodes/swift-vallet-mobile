@@ -5,6 +5,8 @@ import Layout from './layout';
 import Input from '../../components/common/input';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../routers/types';
 
 const schema = Yup.object().shape({
   email: Yup.string().email("Invalid Email Address").required("Email Address Is Required"),
@@ -14,14 +16,14 @@ const schema = Yup.object().shape({
     .required("Password Is Required"),
 });
 
-const Login = ({ navigation }: any) => {
+const Login = ({ navigation }: { navigation: NativeStackNavigationProp<RootStackParamList, 'auth'> }) => {
   return (
     <Layout page="login">
       <View style={[tw`flex flex-col gap-y-5`]}>
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={schema}
-          onSubmit={(values) => { console.log(values); navigation.navigate("account_setup"); }}
+          onSubmit={(values) => { console.log(values); navigation.navigate("account_setup", { screen: "verification" }); }}
         >
           {({ errors, touched, handleChange, handleBlur, handleSubmit, values }) => (
             <>

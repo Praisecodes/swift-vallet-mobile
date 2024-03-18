@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import tw from 'twrnc';
 import Layout from './layout';
 import Input from '../../components/common/input';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../routers/types';
 
-const ProfileDetails = ({ navigation }: any) => {
+const ProfileDetails = ({ navigation }: { navigation: NativeStackNavigationProp<RootStackParamList, 'account_setup'> }) => {
   const [profile, setProfile] = useState<{ name: string; phone: string; address: string }>({
     name: "",
     address: "",
@@ -65,7 +67,7 @@ const ProfileDetails = ({ navigation }: any) => {
           </View>
         </View>
 
-        <TouchableWithoutFeedback onPress={() => { navigation.navigate("car_details") }}>
+        <TouchableWithoutFeedback onPress={() => { navigation.navigate("account_setup", { screen: "car_details" }) }}>
           <Text style={[tw`w-[100%] text-center py-4 rounded-md text-base mt-18 bg-[#00BE5D] text-[#ffffff]`, { fontFamily: "sora" }]}>
             Next
           </Text>
