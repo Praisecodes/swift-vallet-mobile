@@ -28,7 +28,13 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "This app accesses your photos that you may be able to upload your car images."
+        }
+      ]
     ],
     "extra": {
       "eas": {
