@@ -23,7 +23,7 @@ const Register = ({ navigation }: { navigation: NativeStackNavigationProp<RootSt
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={schema}
-          onSubmit={(values) => { console.log(values) }}
+          onSubmit={(values) => { console.log(values); navigation.navigate("account_setup", { screen: "verification" }); }}
         >
           {({ errors, touched, handleChange, handleBlur, handleSubmit, values }) => (
             <>

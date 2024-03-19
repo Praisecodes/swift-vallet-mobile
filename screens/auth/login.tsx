@@ -16,14 +16,14 @@ const schema = Yup.object().shape({
     .required("Password Is Required"),
 });
 
-const Login = ({ navigation }: { navigation: NativeStackNavigationProp<RootStackParamList, 'auth'> }) => {
+const Login = ({ navigation }: { navigation: NativeStackNavigationProp<RootStackParamList> }) => {
   return (
     <Layout page="login">
       <View style={[tw`flex flex-col gap-y-5`]}>
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={schema}
-          onSubmit={(values) => { console.log(values); navigation.navigate("account_setup", { screen: "verification" }); }}
+          onSubmit={(values) => { console.log(values); navigation.navigate("app", { screen: "home" }); }}
         >
           {({ errors, touched, handleChange, handleBlur, handleSubmit, values }) => (
             <>

@@ -29,6 +29,6 @@ export type RootStackParamList = {
 
 export const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 export const SetupStack = createNativeStackNavigator<AccountSetupParamList>();
-export const AppStack = createBottomTabNavigator<AppStackParamList>();
+export const AppTabs = createBottomTabNavigator<AppStackParamList>();
 export const RootStack = createNativeStackNavigator<RootStackParamList>();
 export const Stack = createNativeStackNavigator();

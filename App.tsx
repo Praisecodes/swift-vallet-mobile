@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { Auth, Onboarding } from './routers';
+import { Auth, Main, Onboarding } from './routers';
 import { useFonts } from 'expo-font';
 import { useEffect, useState } from 'react';
 import { getData } from './states/async_storage';
@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      {onboarded ? <Auth /> : <Onboarding />}
+      {onboarded ? <Main /> : <Onboarding />}
     </NavigationContainer>
   );
 }

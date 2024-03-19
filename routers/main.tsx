@@ -8,7 +8,7 @@ import App from './app';
 
 const Main = () => {
   return (
-    <RootStack.Navigator>
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="auth" component={Auth} />
       <RootStack.Screen name="account_setup" component={AccountSetup} />
       <RootStack.Screen name="app" component={App} />
